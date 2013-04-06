@@ -1,0 +1,151 @@
+/**
+ * JavaCC template file created by SF JavaCC plugin 1.5.17+ wizard for JavaCC 1.5.0+
+ */
+options
+{
+  JDK_VERSION = "1.5";
+
+  static = true;
+}
+
+PARSER_BEGIN(EG1)
+package main;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+
+public class EG1
+{
+  public static void main(String args []) throws ParseException, FileNotFoundException
+  {
+    EG1 parser = new EG1(new FileReader("sample.txt"));
+    try
+    {
+      System.out.println(EG1.start());
+    }
+    catch (Exception e)
+    {
+      System.out.println("NOK.");
+      System.out.println(e.getMessage());
+      //      EG1.ReInit(System.in);
+    }
+    catch (Error e)
+    {
+      System.out.println("Oops.");
+      System.out.println(e.getMessage());
+    }
+  }
+}
+
+PARSER_END(EG1)
+
+SKIP :
+{
+  "\r"
+| "\n"
+}
+
+TOKEN :
+{
+  < SUBO : "<sub>" >
+| < SUBC : "</sub>" >
+| < BOLD : "**" >
+| < ITALIC : "//" >
+}
+
+TOKEN :
+{
+  < SINGLE_ASTERISK : ~[ "*" ] "*" ~[ "*" ] >
+}
+
+// 
+TOKEN :
+{
+  < TEXT : < WORD > (< WORD >)* >
+| < WORD :
+    (
+      < LETTER >
+    | < DIGIT >
+    | < WHITESPACE >
+    )+ >
+| < #DIGIT : [ "0"-"9" ] >
+| < #LETTER : [ "a"-"z", "A"-"Z" ] >
+| < #WHITESPACE :
+    " "
+  | "\t" >
+}
+
+String start() :
+{
+  String s;
+}
+{
+  s = formatted() < EOF >
+  {
+    return "\n\nOUT=[" + s + "]";
+  }
+| < EOF >
+  {
+    return "[EOF]";
+  }
+}
+
+String formatted() :
+{
+  String s;
+}
+{
+  (
+    s = sub()
+  | s = bold()
+  )
+  {
+    return s;
+  }
+}
+
+String sub() :
+{
+  Token t = null;
+  String s = null;
+  String out = "";
+}
+{
+  {
+    System.out.print("sub ");
+  }
+  < SUBO >
+  (
+    t = < TEXT >
+    {
+      out += "\"" + t.image + "\"";
+    }
+  | s = formatted()
+    {
+      out += s;
+    }
+  )+
+  < SUBC >
+  {
+    return "sub(" + out + ")";
+  }
+}
+
+String bold() :
+{
+  Token t = null;
+  String s = null;
+}
+{
+  {
+    System.out.print("bold ");
+  }
+  < BOLD >
+  (
+    t = < TEXT >
+  | s = formatted()
+  )+
+  < BOLD >
+  {
+    return "bold(" + ((t != null) ? t.image : s) + ")";
+  }
+}
