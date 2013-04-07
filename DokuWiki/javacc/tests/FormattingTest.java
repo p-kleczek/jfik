@@ -25,6 +25,13 @@ public class FormattingTest {
 		parser = new EG1(stringToInputStream(text));
 		parser.start();
 	}
+	
+	@Test
+	public void testUnderscored() throws ParseException {
+		String text = "__subscript__**^%a**";
+		parser = new EG1(stringToInputStream(text));
+		parser.start();
+	}
 
 	private static InputStream stringToInputStream(String s) {
 		return new ByteArrayInputStream(s.getBytes());

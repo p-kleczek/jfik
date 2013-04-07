@@ -19,21 +19,23 @@ public interface EG1Constants {
   /** RegularExpression Id. */
   int ITALIC = 6;
   /** RegularExpression Id. */
-  int SINGLE_ASTERISK = 7;
+  int UNDERSCORE = 7;
   /** RegularExpression Id. */
-  int SPECIAL_TOKENS = 8;
+  int SINGLE_ASTERISK = 8;
   /** RegularExpression Id. */
-  int TEXT = 9;
+  int SPECIAL_TOKENS = 9;
   /** RegularExpression Id. */
-  int WORD = 10;
+  int TEXT = 10;
   /** RegularExpression Id. */
-  int DIGIT = 11;
+  int WORD = 11;
   /** RegularExpression Id. */
-  int LETTER = 12;
+  int DIGIT = 12;
   /** RegularExpression Id. */
-  int WHITESPACE = 13;
+  int LETTER = 13;
   /** RegularExpression Id. */
-  int SPECIAL_CHARS = 14;
+  int WHITESPACE = 14;
+  /** RegularExpression Id. */
+  int SPECIAL_CHARS = 15;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -47,6 +49,7 @@ public interface EG1Constants {
     "\"</sub>\"",
     "\"**\"",
     "\"//\"",
+    "\"__\"",
     "<SINGLE_ASTERISK>",
     "<SPECIAL_TOKENS>",
     "<TEXT>",
