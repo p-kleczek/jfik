@@ -32,6 +32,14 @@ public class FormattingTest {
 		parser = new EG1(stringToInputStream(text));
 		parser.start();
 	}
+	
+	@Test
+	public void testDeleted() throws ParseException {
+		//TODO problem z testem
+		String text = "<del>subscript</del>";
+		parser = new EG1(stringToInputStream(text));
+		parser.start();
+	}
 
 	private static InputStream stringToInputStream(String s) {
 		return new ByteArrayInputStream(s.getBytes());
