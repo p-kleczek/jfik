@@ -121,6 +121,10 @@ String text() :
         {
           s = t.image;
         }
+      | t = < ITALICS >
+        {
+          s = t.image;
+        }
       )
     )
     {
@@ -141,6 +145,9 @@ String number() :
   Token t;
 }
 {
+  {
+    System.out.print("number ");
+  }
   t = < NUMBER >
   {
     return t.image;
@@ -188,6 +195,10 @@ String plainTextPiece() :
 | "*"
   {
     return "*";
+  }
+| "/"
+  {
+    return "/";
   }
 }
 
@@ -415,7 +426,13 @@ String simpleTag() :
   String s;
 }
 {
-  s = bold()
+	{
+		 System.out.print("simple ");
+	}
+  (
+    s = bold()
+  | s = italics()
+  )
   {
     return s;
   }
@@ -455,6 +472,7 @@ String bold() :
 String italics() :
 {
   String s = "";
+  String out = "";
 }
 {
   {
@@ -463,13 +481,24 @@ String italics() :
   (
     < ITALICS >
     (
-      s = bold()
-    | s = text() // TODO: text __BEZ__ bolda!
+      	(
+      		(
+      			//s = bold()
+    			//|	s = text() // TODO: text __BEZ__ bolda!
+    			s = typo()
+        		| s = bold()
+        		| s = format()
+        		| s = plainTextPiece()
+    		)
+    		{
+    			out += s;
+    		}
+    	)+
     )?
     < ITALICS >
   )
   {
-    return "<i>" + s + "</i>";
+    return "<i>" + out + "</i>";
   }
 }
 

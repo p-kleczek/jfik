@@ -104,11 +104,15 @@ public class PrimitiveTest {
 	@Test
 	public void testMixedMarkup() throws ParseException, IOException {
 		test();
+		//TODO nie przechodzi bo jedny pasujacy token to token maila
+		//a "file" nie pasuje do regexa
 	}
 
 	@Test
 	public void testSimple1() throws ParseException, IOException {
 		test();
+		//TODO Tu musi byc zle, poniewaz // lapie otwarcie <i> a nie ma drugiego //
+		//blad uzytkownika
 	}
 
 	@Test
@@ -117,7 +121,17 @@ public class PrimitiveTest {
 	}
 	
 	@Test
+	public void testSimple3() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
 	public void testSimpleNested() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testItalics1() throws ParseException, IOException {
 		test();
 	}
 

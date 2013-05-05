@@ -11,31 +11,39 @@ public interface EG1Constants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int SUBO = 3;
+  int ARROW_RIGHT = 1;
   /** RegularExpression Id. */
-  int SUBC = 4;
+  int NUMBER = 2;
   /** RegularExpression Id. */
-  int BOLD = 5;
+  int WORD = 3;
   /** RegularExpression Id. */
-  int ITALIC = 6;
+  int ALNUM = 4;
   /** RegularExpression Id. */
-  int UNDERSCORE = 7;
+  int PARA = 5;
   /** RegularExpression Id. */
-  int SINGLE_ASTERISK = 8;
+  int DIGIT = 6;
   /** RegularExpression Id. */
-  int SPECIAL_TOKENS = 9;
+  int LETTER = 7;
   /** RegularExpression Id. */
-  int TEXT = 10;
+  int URL = 8;
   /** RegularExpression Id. */
-  int WORD = 11;
+  int DOMAIN = 9;
   /** RegularExpression Id. */
-  int DIGIT = 12;
+  int E_MAIL = 10;
   /** RegularExpression Id. */
-  int LETTER = 13;
+  int E_MAIL_USERNAME = 11;
   /** RegularExpression Id. */
-  int WHITESPACE = 14;
+  int DELO = 12;
   /** RegularExpression Id. */
-  int SPECIAL_CHARS = 15;
+  int DELC = 13;
+  /** RegularExpression Id. */
+  int BOLD = 14;
+  /** RegularExpression Id. */
+  int ITALICS = 15;
+  /** RegularExpression Id. */
+  int UNDERLINE = 16;
+  /** RegularExpression Id. */
+  int NO_FORAT = 17;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -43,21 +51,38 @@ public interface EG1Constants {
   /** Literal token values. */
   String[] tokenImage = {
     "<EOF>",
-    "\"\\r\"",
-    "\"\\n\"",
-    "\"<sub>\"",
-    "\"</sub>\"",
+    "\"->\"",
+    "<NUMBER>",
+    "<WORD>",
+    "<ALNUM>",
+    "<PARA>",
+    "<DIGIT>",
+    "<LETTER>",
+    "<URL>",
+    "<DOMAIN>",
+    "<E_MAIL>",
+    "<E_MAIL_USERNAME>",
+    "\"<del>\"",
+    "\"</del>\"",
     "\"**\"",
     "\"//\"",
     "\"__\"",
-    "<SINGLE_ASTERISK>",
-    "<SPECIAL_TOKENS>",
-    "<TEXT>",
-    "<WORD>",
-    "<DIGIT>",
-    "<LETTER>",
-    "<WHITESPACE>",
-    "<SPECIAL_CHARS>",
+    "\"%%\"",
+    "\"<\"",
+    "\">\"",
+    "\"*\"",
+    "\"/\"",
+    "\".\"",
+    "\"-\"",
+    "\"_\"",
+    "\":\"",
+    "\" \"",
+    "\"{{\"",
+    "\"?\"",
+    "\"|\"",
+    "\"}}\"",
+    "\"[[\"",
+    "\"]]\"",
   };
 
 }
