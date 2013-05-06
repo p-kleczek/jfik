@@ -1,0 +1,19 @@
+  -a
+    -b
+      -c
+  -d
+# OUT
+<ol>
+	<li>a
+		<ol>
+			<li>b
+				<ol>
+					<li>c
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</li>
+	<li>d
+	</li>
+</ol>
