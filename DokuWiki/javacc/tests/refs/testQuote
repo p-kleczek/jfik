@@ -1,0 +1,11 @@
+>a
+>>b
+>c
+# OUT
+<blockquote>
+	a
+	<blockquote>
+		b
+	</blockquote>
+	c
+</blockquote>

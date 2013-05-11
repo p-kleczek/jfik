@@ -21,8 +21,6 @@ import main.ParseException;
 
 import org.junit.Test;
 
-// TODO: testy jako porównywanie zawartosci pliku stworzonego recznie z tym, co generuje parser (latwiejsze tworzenie testow)
-
 @SuppressWarnings("unused")
 public class PrimitiveTest {
 
@@ -134,24 +132,52 @@ public class PrimitiveTest {
 //	public void testItalics1() throws ParseException, IOException {
 //		test();
 //	}
-
+//
 //	@Test
 //	public void testListSimple() throws ParseException, IOException {
 //		test();
 //	}
-
-	@Test
-	public void testListSimple2() throws ParseException, IOException {
-		test();
-	}
-
-	
+//
+//	@Test
+//	public void testListSimple2() throws ParseException, IOException {
+//		test();
+//	}
+//
+//	
 //	@Test
 //	public void testPara() throws ParseException, IOException {
 //		test();
 //	}
+//
+//	@Test
+//	public void testEmail() throws ParseException, IOException {
+//		test();
+//	}
+//	
+//	@Test
+//	public void testImage() throws ParseException, IOException {
+//		test();
+//	}
+//	
+//	@Test
+//	public void testUrl() throws ParseException, IOException {
+//		test();
+//	}
+//
+//	@Test
+//	public void testHeadline() throws ParseException, IOException {
+//		test();
+//	}
+//
+	@Test
+	public void testHorizontalBreak() throws ParseException, IOException {
+		test();
+	}
 
-	
+//	@Test
+//	public void testQuote() throws ParseException, IOException {
+//		test();
+//	}
 
 	private static void test() throws IOException, ParseException {
 		String methodName = Thread.currentThread().getStackTrace()[2]
@@ -161,8 +187,8 @@ public class PrimitiveTest {
 
 		System.out.print(blanks.substring(methodName.length()) + methodName
 				+ " :\t");
-		String s = parser.start();
-//		System.out.println(String.format("%s\n--\n%s\n\n", tc.input, s));
+		String s = parser.start().trim();
+		System.out.println(String.format("\n%s\n--\n%s\n**\n%s\n\n", tc.input, s, tc.output));
 		assertEquals(tc.output, s);
 	}
 
@@ -199,6 +225,6 @@ public class PrimitiveTest {
 		
 		input.append(nl);
 
-		return new TestContent(input.toString(), output.toString());
+		return new TestContent(input.toString(), output.toString().trim());
 	}
 }
