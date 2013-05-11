@@ -25,25 +25,27 @@ public interface EG1Constants {
   /** RegularExpression Id. */
   int LETTER = 7;
   /** RegularExpression Id. */
-  int URL = 8;
+  int HR = 8;
   /** RegularExpression Id. */
-  int DOMAIN = 9;
+  int URL = 9;
   /** RegularExpression Id. */
-  int E_MAIL = 10;
+  int DOMAIN = 10;
   /** RegularExpression Id. */
-  int E_MAIL_USERNAME = 11;
+  int E_MAIL = 11;
   /** RegularExpression Id. */
-  int DELO = 12;
+  int E_MAIL_USERNAME = 12;
   /** RegularExpression Id. */
-  int DELC = 13;
+  int DELO = 13;
   /** RegularExpression Id. */
-  int BOLD = 14;
+  int DELC = 14;
   /** RegularExpression Id. */
-  int ITALICS = 15;
+  int BOLD = 15;
   /** RegularExpression Id. */
-  int UNDERLINE = 16;
+  int ITALICS = 16;
   /** RegularExpression Id. */
-  int NO_FORAT = 17;
+  int UNDERLINE = 17;
+  /** RegularExpression Id. */
+  int NO_FORAT = 18;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -58,6 +60,7 @@ public interface EG1Constants {
     "<PARA>",
     "<DIGIT>",
     "<LETTER>",
+    "<HR>",
     "<URL>",
     "<DOMAIN>",
     "<E_MAIL>",
@@ -84,7 +87,6 @@ public interface EG1Constants {
     "\"[[\"",
     "\"]]\"",
     "\"=\"",
-    "\"----\"",
   };
 
 }
