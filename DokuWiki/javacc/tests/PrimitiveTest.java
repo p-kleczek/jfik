@@ -63,121 +63,124 @@ public class PrimitiveTest {
 
 	private static EG1 parser;
 
-//	@Test
-//	public void testWord() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	@Test
-//	public void testNumber() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	@Test
-//	public void testPlainText() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	@Test
-//	public void testPlainText1() throws ParseException, IOException {
-//		// niby-bold
-//		test();
-//	}
-//
-//	@Test
-//	public void testBold() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	@Test
-//	public void testBold1() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	@Test
-//	public void testBold2() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	@Test
-//	public void testMixedMarkup() throws ParseException, IOException {
-//		test();
-//		//TODO nie przechodzi bo jedny pasujacy token to token maila
-//		//a "file" nie pasuje do regexa
-//	}
-//
+	@Test
+	public void testWord() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testNumber() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testPlainText() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testPlainText1() throws ParseException, IOException {
+		// niby-bold
+		test();
+	}
+
+	@Test
+	public void testBold() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testBold1() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testBold2() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testMixedMarkup() throws ParseException, IOException {
+		test();
+	}
+
 //	@Test
 //	public void testSimple1() throws ParseException, IOException {
 //		test();
 //		//TODO Tu musi byc zle, poniewaz // lapie otwarcie <i> a nie ma drugiego //
 //		//blad uzytkownika
 //	}
-//
-//	@Test
-//	public void testSimple2() throws ParseException, IOException {
-//		test();
-//	}
-//	
-//	@Test
-//	public void testSimple3() throws ParseException, IOException {
-//		test();
-//	}
-//	
-//	@Test
-//	public void testSimpleNested() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	@Test
-//	public void testItalics1() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	@Test
-//	public void testListSimple() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	@Test
-//	public void testListSimple2() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	
-//	@Test
-//	public void testPara() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	@Test
-//	public void testEmail() throws ParseException, IOException {
-//		test();
-//	}
-//	
-//	@Test
-//	public void testImage() throws ParseException, IOException {
-//		test();
-//	}
-//	
-//	@Test
-//	public void testUrl() throws ParseException, IOException {
-//		test();
-//	}
-//
-//	@Test
-//	public void testHeadline() throws ParseException, IOException {
-//		test();
-//	}
-//
+
+	@Test
+	public void testSimple2() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testSimple3() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testSimpleNested() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testItalics1() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testListSimple() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testListSimple2() throws ParseException, IOException {
+		test();
+	}
+
+	
+	@Test
+	public void testPara() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testEmail() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testImage() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testUrl() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testHeadline() throws ParseException, IOException {
+		test();
+	}
+
 	@Test
 	public void testHorizontalBreak() throws ParseException, IOException {
 		test();
 	}
 
-//	@Test
-//	public void testQuote() throws ParseException, IOException {
-//		test();
-//	}
+	@Test
+	public void testQuote() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testQuoteSimple() throws ParseException, IOException {
+		test();
+	}
 
 	private static void test() throws IOException, ParseException {
 		String methodName = Thread.currentThread().getStackTrace()[2]
@@ -188,7 +191,7 @@ public class PrimitiveTest {
 		System.out.print(blanks.substring(methodName.length()) + methodName
 				+ " :\t");
 		String s = parser.start().trim();
-		System.out.println(String.format("\n%s\n--\n%s\n**\n%s\n\n", tc.input, s, tc.output));
+//		System.out.println(String.format("\n%s\n--\n%s\n**\n%s\n\n", tc.input, s, tc.output));
 		assertEquals(tc.output, s);
 	}
 

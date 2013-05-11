@@ -13,39 +13,67 @@ public interface EG1Constants {
   /** RegularExpression Id. */
   int ARROW_RIGHT = 1;
   /** RegularExpression Id. */
-  int NUMBER = 2;
+  int ARROW_LEFT = 2;
   /** RegularExpression Id. */
-  int WORD = 3;
+  int ARROW_BI = 3;
   /** RegularExpression Id. */
-  int ALNUM = 4;
+  int DOUBLE_ARROW_RIGHT = 4;
   /** RegularExpression Id. */
-  int PARA = 5;
+  int DOUBLE_ARROW_LEFT = 5;
   /** RegularExpression Id. */
-  int DIGIT = 6;
+  int DOUBLE_ARROW_BI = 6;
   /** RegularExpression Id. */
-  int LETTER = 7;
+  int QUOTE_OPEN = 7;
   /** RegularExpression Id. */
-  int HR = 8;
+  int QUOTE_CLOSE = 8;
   /** RegularExpression Id. */
-  int URL = 9;
+  int DASH_SHORT = 9;
   /** RegularExpression Id. */
-  int DOMAIN = 10;
+  int DASH_LONG = 10;
   /** RegularExpression Id. */
-  int E_MAIL = 11;
+  int SYMBOL_COPYRIGHT = 11;
   /** RegularExpression Id. */
-  int E_MAIL_USERNAME = 12;
+  int SYMBOL_TRADEMARK = 12;
   /** RegularExpression Id. */
-  int DELO = 13;
+  int SYMBOL_REGISTERED = 13;
   /** RegularExpression Id. */
-  int DELC = 14;
+  int RESOLUTION = 14;
   /** RegularExpression Id. */
-  int BOLD = 15;
+  int NUMBER = 15;
   /** RegularExpression Id. */
-  int ITALICS = 16;
+  int WORD = 16;
   /** RegularExpression Id. */
-  int UNDERLINE = 17;
+  int ALNUM = 17;
   /** RegularExpression Id. */
-  int NO_FORAT = 18;
+  int PARA = 18;
+  /** RegularExpression Id. */
+  int DIGIT = 19;
+  /** RegularExpression Id. */
+  int LETTER = 20;
+  /** RegularExpression Id. */
+  int HR = 21;
+  /** RegularExpression Id. */
+  int URL = 22;
+  /** RegularExpression Id. */
+  int DOMAIN = 23;
+  /** RegularExpression Id. */
+  int E_MAIL = 24;
+  /** RegularExpression Id. */
+  int E_MAIL_USERNAME = 25;
+  /** RegularExpression Id. */
+  int LINKO = 26;
+  /** RegularExpression Id. */
+  int DELO = 27;
+  /** RegularExpression Id. */
+  int DELC = 28;
+  /** RegularExpression Id. */
+  int BOLD = 29;
+  /** RegularExpression Id. */
+  int ITALICS = 30;
+  /** RegularExpression Id. */
+  int UNDERLINE = 31;
+  /** RegularExpression Id. */
+  int NO_FORAT = 32;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -54,6 +82,19 @@ public interface EG1Constants {
   String[] tokenImage = {
     "<EOF>",
     "\"->\"",
+    "\"<-\"",
+    "\"<->\"",
+    "\"=>\"",
+    "\"<=\"",
+    "\"<=>\"",
+    "\"<<\"",
+    "\">>\"",
+    "\"--\"",
+    "\"---\"",
+    "\"(c)\"",
+    "\"(tm)\"",
+    "\"(r)\"",
+    "<RESOLUTION>",
     "<NUMBER>",
     "<WORD>",
     "<ALNUM>",
@@ -65,6 +106,7 @@ public interface EG1Constants {
     "<DOMAIN>",
     "<E_MAIL>",
     "<E_MAIL_USERNAME>",
+    "\"[[\"",
     "\"<del>\"",
     "\"</del>\"",
     "\"**\"",
@@ -76,17 +118,18 @@ public interface EG1Constants {
     "\"*\"",
     "\"/\"",
     "\"-\"",
+    "\"[\"",
+    "\" \"",
+    "\"=\"",
     "\".\"",
     "\"_\"",
     "\":\"",
-    "\" \"",
     "\"{{\"",
     "\"?\"",
     "\"|\"",
     "\"}}\"",
-    "\"[[\"",
     "\"]]\"",
-    "\"=\"",
+    "\" =\"",
   };
 
 }
