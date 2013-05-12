@@ -152,11 +152,6 @@ public class PrimitiveTest {
 	}
 	
 	@Test
-	public void testImage() throws ParseException, IOException {
-		test();
-	}
-	
-	@Test
 	public void testUrl() throws ParseException, IOException {
 		test();
 	}
@@ -183,6 +178,16 @@ public class PrimitiveTest {
 	
 	@Test
 	public void testCode() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testImage() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testLinks() throws ParseException, IOException {
 		test();
 	}
 	

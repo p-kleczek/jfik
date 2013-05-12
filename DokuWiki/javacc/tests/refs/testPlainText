@@ -2,8 +2,10 @@ abc12*<b
 ab[[cd
 a->b
 1x2
+a]]b
 # OUT
 abc12*<b
 ab[[cd
 a→b
 1×2
+a]]b

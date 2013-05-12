@@ -1,3 +1,5 @@
+{{wiki:dokuwiki-128.png}}
+
 {{http://de3.php.net/images/php.gif}}
 {{http://de3.php.net/images/php.gif?50}}
 {{http://de3.php.net/images/php.gif?200x50}}
@@ -8,10 +10,11 @@
 
 {{ http://de3.php.net/images/php.gif |Caption}}
 # OUT
-<img src="http://de3.php.net/images/php.gif" alt="" align="left">
-<img src="http://de3.php.net/images/php.gif" alt="" align="left" width="50">
-<img src="http://de3.php.net/images/php.gif" alt="" align="left" width="200" height="50">
-<img src="http://de3.php.net/images/php.gif" alt="" align="left">
+<img src="/_media/wiki:dokuwiki-128.png" alt="">
+<img src="http://de3.php.net/images/php.gif" alt="">
+<img src="http://de3.php.net/images/php.gif" alt="" width="50">
+<img src="http://de3.php.net/images/php.gif" alt="" width="200" height="50">
+<img src="http://de3.php.net/images/php.gif" alt="">
 <img src="http://de3.php.net/images/php.gif" alt="" align="right">
 <img src="http://de3.php.net/images/php.gif" alt="" align="middle">
 <img src="http://de3.php.net/images/php.gif" alt="Caption" align="middle">
