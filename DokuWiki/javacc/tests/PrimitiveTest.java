@@ -31,7 +31,6 @@ public class PrimitiveTest {
 		public String output;
 
 		public TestContent(String input, String output) {
-			super();
 			this.input = input;
 			this.output = output;
 		}
