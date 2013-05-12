@@ -4,7 +4,8 @@ or followed by\\ a whitespace \\this happens without it.
 # OUT
 This is some text with some linebreaks
 <br>
-Note that the two backslashes are only recognized at the end of a line
+Note that the
+two backslashes are only recognized at the end of a line
 <br>
 or followed by
 <br>

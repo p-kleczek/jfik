@@ -47,37 +47,43 @@ public interface EG1Constants {
   /** RegularExpression Id. */
   int PARA = 18;
   /** RegularExpression Id. */
-  int DIGIT = 19;
+  int NEW_LINE = 19;
   /** RegularExpression Id. */
-  int LETTER = 20;
+  int DIGIT = 20;
   /** RegularExpression Id. */
-  int HR = 21;
+  int LETTER = 21;
   /** RegularExpression Id. */
-  int URL = 22;
+  int HR = 22;
   /** RegularExpression Id. */
-  int DOMAIN = 23;
+  int URL = 23;
   /** RegularExpression Id. */
-  int E_MAIL = 24;
+  int DOMAIN = 24;
   /** RegularExpression Id. */
-  int E_MAIL_USERNAME = 25;
+  int E_MAIL = 25;
   /** RegularExpression Id. */
-  int LINKC = 26;
+  int E_MAIL_USERNAME = 26;
   /** RegularExpression Id. */
   int LINKO = 27;
   /** RegularExpression Id. */
-  int DOUBLE_SPACE = 28;
+  int LINKC = 28;
   /** RegularExpression Id. */
-  int DELO = 29;
+  int IMAGEO = 29;
   /** RegularExpression Id. */
-  int DELC = 30;
+  int IMAGEC = 30;
   /** RegularExpression Id. */
-  int BOLD = 31;
+  int DOUBLE_SPACE = 31;
   /** RegularExpression Id. */
-  int ITALICS = 32;
+  int DELO = 32;
   /** RegularExpression Id. */
-  int UNDERLINE = 33;
+  int DELC = 33;
   /** RegularExpression Id. */
-  int NO_FORAT = 34;
+  int BOLD = 34;
+  /** RegularExpression Id. */
+  int ITALICS = 35;
+  /** RegularExpression Id. */
+  int UNDERLINE = 36;
+  /** RegularExpression Id. */
+  int NO_FORAT = 37;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -103,6 +109,7 @@ public interface EG1Constants {
     "<WORD>",
     "<ALNUM>",
     "<PARA>",
+    "\"\\\\\\\\\"",
     "<DIGIT>",
     "<LETTER>",
     "<HR>",
@@ -110,8 +117,10 @@ public interface EG1Constants {
     "<DOMAIN>",
     "<E_MAIL>",
     "<E_MAIL_USERNAME>",
-    "\"]]\"",
     "\"[[\"",
+    "\"]]\"",
+    "\"{{\"",
+    "\"}}\"",
     "\"  \"",
     "\"<del>\"",
     "\"</del>\"",
@@ -119,22 +128,20 @@ public interface EG1Constants {
     "\"//\"",
     "\"__\"",
     "\"%%\"",
+    "\" \"",
     "\"<\"",
     "\">\"",
     "\"*\"",
     "\"/\"",
     "\"-\"",
     "\"[\"",
-    "\" \"",
     "\"=\"",
     "\".\"",
     "\"_\"",
     "\":\"",
     "\"#\"",
-    "\"{{\"",
     "\"?\"",
     "\"|\"",
-    "\"}}\"",
     "\" =\"",
   };
 
