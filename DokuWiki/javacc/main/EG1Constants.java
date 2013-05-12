@@ -63,17 +63,19 @@ public interface EG1Constants {
   /** RegularExpression Id. */
   int LINKO = 26;
   /** RegularExpression Id. */
-  int DELO = 27;
+  int DOUBLE_SPACE = 27;
   /** RegularExpression Id. */
-  int DELC = 28;
+  int DELO = 28;
   /** RegularExpression Id. */
-  int BOLD = 29;
+  int DELC = 29;
   /** RegularExpression Id. */
-  int ITALICS = 30;
+  int BOLD = 30;
   /** RegularExpression Id. */
-  int UNDERLINE = 31;
+  int ITALICS = 31;
   /** RegularExpression Id. */
-  int NO_FORAT = 32;
+  int UNDERLINE = 32;
+  /** RegularExpression Id. */
+  int NO_FORAT = 33;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -107,6 +109,7 @@ public interface EG1Constants {
     "<E_MAIL>",
     "<E_MAIL_USERNAME>",
     "\"[[\"",
+    "\"  \"",
     "\"<del>\"",
     "\"</del>\"",
     "\"**\"",

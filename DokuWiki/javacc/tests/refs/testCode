@@ -1,0 +1,9 @@
+  a
+    b
+  a->b
+# OUT
+<pre>
+a
+  b
+a->b
+</pre>

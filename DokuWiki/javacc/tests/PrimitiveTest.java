@@ -141,7 +141,6 @@ public class PrimitiveTest {
 		test();
 	}
 
-	
 	@Test
 	public void testPara() throws ParseException, IOException {
 		test();
@@ -181,6 +180,12 @@ public class PrimitiveTest {
 	public void testQuoteSimple() throws ParseException, IOException {
 		test();
 	}
+	
+	@Test
+	public void testCode() throws ParseException, IOException {
+		test();
+	}
+	
 
 	private static void test() throws IOException, ParseException {
 		String methodName = Thread.currentThread().getStackTrace()[2]
