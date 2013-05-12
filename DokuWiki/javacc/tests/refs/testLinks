@@ -1,0 +1,7 @@
+[[pagename]]
+[[pagename|link text]]
+[[some:namespaces]]
+[[syntax#internal|this Section]]
+[[http://www.php.net|{{wiki:dokuwiki-128.png}}]]
+# OUT
+<p><a href="/wiki:pagename" title="wiki:pagename" rel="nofollow">pagename</a> <a href="/wiki:pagename" title="wiki:pagename" rel="nofollow">link text</a> <a href="/some:namespaces" title="some:namespaces" rel="nofollow">namespaces</a> <a href="/wiki:syntax#internal" title="wiki:syntax" rel="nofollow">this Section</a> <a href="http://www.php.net" title="http://www.php.net"><img src="/_media/wiki:dokuwiki-128.png" alt=""></a></p>

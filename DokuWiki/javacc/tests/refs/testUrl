@@ -1,0 +1,4 @@
+[[http://www.google.com]]
+[[http://www.google.com|Title]]
+# OUT
+<p><a href="http://www.google.com" title="http://www.google.com">http://www.google.com</a> <a href="http://www.google.com" title="http://www.google.com">Title</a></p>

@@ -1,0 +1,22 @@
+  -a
+    -b
+
+  *a
+    *b
+# OUT
+<ol>
+	<li>a
+		<ol>
+			<li>b
+			</li>
+		</ol>
+	</li>
+</ol>
+<ul>
+	<li>a
+		<ul>
+			<li>b
+			</li>
+		</ul>
+	</li>
+</ul>

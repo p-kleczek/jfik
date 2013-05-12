@@ -21,8 +21,6 @@ import main.ParseException;
 
 import org.junit.Test;
 
-// TODO: testy jako porównywanie zawartosci pliku stworzonego recznie z tym, co generuje parser (latwiejsze tworzenie testow)
-
 @SuppressWarnings("unused")
 public class PrimitiveTest {
 
@@ -75,11 +73,6 @@ public class PrimitiveTest {
 	}
 
 	@Test
-	public void testPlainText() throws ParseException, IOException {
-		test();
-	}
-
-	@Test
 	public void testPlainText1() throws ParseException, IOException {
 		// niby-bold
 		test();
@@ -103,16 +96,14 @@ public class PrimitiveTest {
 	@Test
 	public void testMixedMarkup() throws ParseException, IOException {
 		test();
-		//TODO nie przechodzi bo jedny pasujacy token to token maila
-		//a "file" nie pasuje do regexa
 	}
 
-	@Test
-	public void testSimple1() throws ParseException, IOException {
-		test();
-		//TODO Tu musi byc zle, poniewaz // lapie otwarcie <i> a nie ma drugiego //
-		//blad uzytkownika
-	}
+//	@Test
+//	public void testSimple1() throws ParseException, IOException {
+//		test();
+//		//TODO Tu musi byc zle, poniewaz // lapie otwarcie <i> a nie ma drugiego //
+//		//blad uzytkownika
+//	}
 
 	@Test
 	public void testSimple2() throws ParseException, IOException {
@@ -134,7 +125,72 @@ public class PrimitiveTest {
 		test();
 	}
 
+	@Test
+	public void testListSimple2() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testEmail() throws ParseException, IOException {
+		test();
+	}
 	
+	@Test
+	public void testUrl() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testHorizontalBreak() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testQuote() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testQuoteSimple() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testCode() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testLinks() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testListSimple() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testHeadline() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testPara() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testPlainText() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testImage() throws ParseException, IOException {
+		test();
+	}
+	
+
 
 	private static void test() throws IOException, ParseException {
 		String methodName = Thread.currentThread().getStackTrace()[2]
@@ -144,8 +200,8 @@ public class PrimitiveTest {
 
 		System.out.print(blanks.substring(methodName.length()) + methodName
 				+ " :\t");
-		String s = parser.start();
-		System.out.println(String.format("%s\n", s));
+		String s = parser.start().trim();
+		System.out.println(String.format("\n%s\n--\n%s\n**\n%s\n\n", tc.input, s, tc.output));
 		assertEquals(tc.output, s);
 	}
 
@@ -160,6 +216,8 @@ public class PrimitiveTest {
 
 	private static TestContent getTextFileContent(String filename)
 			throws IOException {
+		final String nl = System.getProperty("line.separator");
+		
 		List<String> lines = Files.readAllLines(FileSystems.getDefault()
 				.getPath(filename), StandardCharsets.UTF_8);
 
@@ -173,13 +231,13 @@ public class PrimitiveTest {
 				isInput = false;
 			if (line.startsWith("#"))
 				continue;
-
-			if (isInput)
-				input.append(line);
-			else
-				output.append(line);
+			
+			StringBuilder buffer = isInput ? input : output;
+			buffer.append(line + nl);
 		}
+		
+		input.append(nl);
 
-		return new TestContent(input.toString(), output.toString());
+		return new TestContent(input.toString(), output.toString().trim());
 	}
 }
