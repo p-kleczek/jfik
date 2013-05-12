@@ -11,12 +11,7 @@
 {{ http://de3.php.net/images/php.gif |Caption}}
 {{ wiki:dokuwiki-128.png |This is the caption}}
 # OUT
-<img src="/_media/wiki:dokuwiki-128.png" alt="">
-<img src="http://de3.php.net/images/php.gif" alt="">
-<img src="http://de3.php.net/images/php.gif" alt="" width="50">
-<img src="http://de3.php.net/images/php.gif" alt="" width="200" height="50">
-<img src="http://de3.php.net/images/php.gif" alt="">
-<img src="http://de3.php.net/images/php.gif" alt="" align="right">
-<img src="http://de3.php.net/images/php.gif" alt="" align="middle">
-<img src="http://de3.php.net/images/php.gif" title="Caption" alt="Caption" align="middle">
-<img src="/_media/wiki:dokuwiki-128.png" title="This is the caption" alt="This is the caption" align="middle">
+<p><img src="/_media/wiki:dokuwiki-128.png" alt=""></p>
+<p><img src="http://de3.php.net/images/php.gif" alt=""> <img src="http://de3.php.net/images/php.gif" alt="" width="50"> <img src="http://de3.php.net/images/php.gif" alt="" width="200" height="50"></p>
+<p><img src="http://de3.php.net/images/php.gif" alt=""> <img src="http://de3.php.net/images/php.gif" alt="" align="right"> <img src="http://de3.php.net/images/php.gif" alt="" align="middle"></p>
+<p><img src="http://de3.php.net/images/php.gif" title="Caption" alt="Caption" align="middle"> <img src="/_media/wiki:dokuwiki-128.png" title="This is the caption" alt="This is the caption" align="middle"></p>

@@ -74,11 +74,6 @@ public class PrimitiveTest {
 	}
 
 	@Test
-	public void testPlainText() throws ParseException, IOException {
-		test();
-	}
-
-	@Test
 	public void testPlainText1() throws ParseException, IOException {
 		// niby-bold
 		test();
@@ -182,16 +177,21 @@ public class PrimitiveTest {
 	}
 
 	@Test
-	public void testImage() throws ParseException, IOException {
-		test();
-	}
-	
-	@Test
 	public void testPara() throws ParseException, IOException {
 		test();
 	}
 
+	@Test
+	public void testPlainText() throws ParseException, IOException {
+		test();
+	}
+
+	@Test
+	public void testImage() throws ParseException, IOException {
+		test();
+	}
 	
+
 
 	private static void test() throws IOException, ParseException {
 		String methodName = Thread.currentThread().getStackTrace()[2]
