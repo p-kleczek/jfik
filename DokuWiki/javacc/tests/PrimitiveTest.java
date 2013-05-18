@@ -92,6 +92,11 @@ public class PrimitiveTest {
 	public void testBold2() throws ParseException, IOException {
 		test();
 	}
+	
+	@Test
+	public void testBold3() throws ParseException, IOException {
+		test();
+	}
 
 	@Test
 	public void testMixedMarkup() throws ParseException, IOException {
@@ -190,7 +195,30 @@ public class PrimitiveTest {
 		test();
 	}
 	
-
+	@Test
+	public void testDel1() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testDel2() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testSup1() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testSub1() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testSubMix() throws ParseException, IOException {
+		test();
+	}
 
 	private static void test() throws IOException, ParseException {
 		String methodName = Thread.currentThread().getStackTrace()[2]
