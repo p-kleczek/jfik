@@ -103,12 +103,12 @@ public class PrimitiveTest {
 		test();
 	}
 
-//	@Test
-//	public void testSimple1() throws ParseException, IOException {
-//		test();
-//		//TODO Tu musi byc zle, poniewaz // lapie otwarcie <i> a nie ma drugiego //
-//		//blad uzytkownika
-//	}
+	@Test
+	public void testSimple1() throws ParseException, IOException {
+		test();
+		//TODO Tu musi byc zle, poniewaz // lapie otwarcie <i> a nie ma drugiego //
+		//blad uzytkownika
+	}
 
 	@Test
 	public void testSimple2() throws ParseException, IOException {
@@ -127,6 +127,11 @@ public class PrimitiveTest {
 
 	@Test
 	public void testItalics1() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testUnderline1() throws ParseException, IOException {
 		test();
 	}
 
