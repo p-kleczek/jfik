@@ -219,6 +219,21 @@ public class PrimitiveTest {
 	public void testSubMix() throws ParseException, IOException {
 		test();
 	}
+	
+	@Test
+	public void testNowiki1() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testNowiki2() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testNowiki3() throws ParseException, IOException {
+		test();
+	}
 
 	private static void test() throws IOException, ParseException {
 		String methodName = Thread.currentThread().getStackTrace()[2]

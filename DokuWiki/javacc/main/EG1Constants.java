@@ -85,13 +85,17 @@ public interface EG1Constants {
   /** RegularExpression Id. */
   int SUBC = 37;
   /** RegularExpression Id. */
-  int BOLD = 38;
+  int NOWIKIO = 38;
   /** RegularExpression Id. */
-  int ITALICS = 39;
+  int NOWIKIC = 39;
   /** RegularExpression Id. */
-  int UNDERLINE = 40;
+  int BOLD = 40;
   /** RegularExpression Id. */
-  int NO_FORAT = 41;
+  int ITALICS = 41;
+  /** RegularExpression Id. */
+  int UNDERLINE = 42;
+  /** RegularExpression Id. */
+  int NO_FORAT = 43;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -136,6 +140,8 @@ public interface EG1Constants {
     "\"</sup>\"",
     "\"<sub>\"",
     "\"</sub>\"",
+    "\"<nowiki>\"",
+    "\"</nowiki>\"",
     "\"**\"",
     "\"//\"",
     "\"__\"",

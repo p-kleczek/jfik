@@ -6,16 +6,25 @@
   public static boolean isDel = false;
   public static boolean isSup = false;
   public static boolean isSub = false;
+  public static boolean isNowiki = false;
 }PARSER_END(EG1)TOKEN :{  < ARROW_RIGHT : "->" >| < ARROW_LEFT : "<-" >| < ARROW_BI : "<->" >| < DOUBLE_ARROW_RIGHT : "=>" >| < DOUBLE_ARROW_LEFT : "<=" >| < DOUBLE_ARROW_BI : "<=>" >| < QUOTE_OPEN : "<<" >| < QUOTE_CLOSE : ">>" >| < DASH_SHORT : "--" >| < DASH_LONG : "---" >| < SYMBOL_COPYRIGHT : "(c)" >| < SYMBOL_TRADEMARK : "(tm)" >| < SYMBOL_REGISTERED : "(r)" >| < RESOLUTION : < NUMBER > "x" < NUMBER >>}TOKEN :{  < NUMBER : (< DIGIT >)+ >| < WORD : (< LETTER >)+ >| < #ALNUM :    (      < DIGIT >    | < LETTER >    )+ >| < PARA :    "\r"  | "\n"  | "\r\n" >| < NEW_LINE : "\\\\" >| < #DIGIT : [ "0"-"9" ] >| < #LETTER : [ "a"-"z", "A"-"Z" ] >}TOKEN :{  < HR : "----" ("-")* < PARA >>}TOKEN :{  < URL :    (      "www."    | "http://"    )    < DOMAIN >    (      ("/" < WORD >)* "." < WORD >    )? >| < #DOMAIN : (< ALNUM > ".")+ < WORD >>  //| < E_MAIL_TAG : "<" < E_MAIL > ">" >
 | < E_MAIL : < E_MAIL_USERNAME > "@" < DOMAIN >>| < #E_MAIL_USERNAME : (< ALNUM > ".")* < ALNUM >>}TOKEN :{  < LINKO : "[[" >| < LINKC : "]]" >| < IMAGEO : "{{" >| < IMAGEC : "}}" >| < DOUBLE_SPACE : "  " >}TOKEN :{  < DELO : "<del>" >| < DELC : "</del>" >}
+
 TOKEN :
 {
   < SUPO : "<sup>" >
 | < SUPC : "</sup>" >}
+
 TOKEN :
 {
   < SUBO : "<sub>" >
-| < SUBC : "</sub>" >}TOKEN :{  < BOLD : "**" >| < ITALICS : "//" >| < UNDERLINE : "__" >
+| < SUBC : "</sub>" >}
+
+TOKEN :
+{
+  < NOWIKIO : "<nowiki>" >
+| < NOWIKIC : "</nowiki>" >
+}TOKEN :{  < BOLD : "**" >| < ITALICS : "//" >| < UNDERLINE : "__" >
 | < NO_FORAT : "%%" >
 }String start() :{  String s = "";  String out = "";  Token t;}{  {    System.out.print("\nSTART\n");  }  (    LOOKAHEAD(< HR >  | headline())    (      (        t = < HR >        {          out += "<hr>" + nl;        }      |        (          s = headline() < PARA >        )        {          out += s + nl;        }      )    )  |    (      (        LOOKAHEAD(quote())        s = quote()      |        (          LOOKAHEAD(list())          s = list()        |          (            LOOKAHEAD(codeBySpaces())            s = codeBySpaces()          | (s = text()          {
             s = textOpen + s + textClose;          })          )        )      )      {
@@ -45,17 +54,52 @@ TOKEN :
   }  "<" t = < E_MAIL > ">"  {    String href = t.image;    String title = t.image;    href = href.replaceAll("@", "%20%5Bat%5D%20");    href = href.replaceAll("\\.", "%20%5Bdot%5D%20");    title = title.replaceAll("@", " [at] ");    title = title.replaceAll("\\.", " [dot] ");    return String.format("<a href=\"mailto:%s\" class=\"mail\" title=\"%s\">%s</a>", href, title, title);  }}String alnum() :{  String s;  String st = "";}{  (    s = word()    {      st += s;    }  | s = number()    {      st += s;    }  )+  {    return st;  }}String url() :{  Token t;}{  t = < URL >  {    return t.image;  }}String link() :{  String s;}{  (    s = wiki()  | s = url()  )  {    return s;  }}String imageUrl() :{  String s;}{  (    (" ")? s = url() (" ")?  )  {    return "iurl=[" + s + "]";  }}String image() :{  Token t;  String s;  String url;  Integer nalign = 0; // 0 - brak, 1 - lewo, 2 - prawo, 3 - oba
   Integer width =-1;  Integer height =-1;  String title = "";  boolean isWiki = false;}{  < IMAGEO > (" "  {    nalign += 1;  }  )? s = link()  {    url = s;    isWiki = url.startsWith("/");    if (isWiki) url = "/_media" + url;  }  (" "  {    nalign += 2;  }  )?  (    "?"    (      (        t = < NUMBER >        {          width = Integer.valueOf(t.image);        }      )    |      (        t = < RESOLUTION >        {          String w = t.image.substring(0, t.image.indexOf('x'));          String h = t.image.substring(t.image.indexOf('x') + 1);          width = Integer.valueOf(w);          height = Integer.valueOf(h);        }      )    )  )?  (    "|"    {      title = "";    }    (      s = imagePlainTextPiece()      {        title += s;      }    )*  )?  < IMAGEC >  {    String alignOption = "";    switch (nalign)    {      case 0 : // fall
       case 1 : // fall (align = "left";)      break;      case 2 : alignOption = "right";      break;      case 3 : alignOption = "middle";      break;    }    String align = (alignOption.isEmpty()) ? "" : " align=\"" + alignOption + "\"";    String titleAttr = (title.isEmpty()) ? "" : " title=\"" + title + "\"";    String out = String.format("<img src=\"%s\"%s alt=\"%s\"%s", url, titleAttr, title, align);    if (width != - 1) out += String.format(" width=\"%d\"", width);    if (height != - 1) out += String.format(" height=\"%d\"", height);    out += ">";    return out;  }}String linkTag() :{  Token t;  String s;  String url;  String title = "";  String titleAttr = "";  boolean isWiki = false;}{  {    System.out.print("link ");  }  (    < LINKO > s = link()    {      url = s;      isWiki = url.startsWith("/");      title = (isWiki) ? url.replaceAll("#(.)*", "").substring(url.lastIndexOf(':') + 1) : url;      titleAttr = (isWiki) ? url.substring(1).replaceAll("#(.)*", "") : url;    }    (      "|"      (        {          title = "";        }        (          s = linkPlainTextPiece()          {            title += s;          }        )+      | s = image()        {          title = s;        }      )    )?    // TODO: tytul moze byc tekstem!
-    < LINKC >  )  {    String rel = (isWiki) ? " rel=\"nofollow\"" : "";    return String.format("<a href=\"%s\" title=\"%s\"%s>%s</a>", url, titleAttr, rel, title);  }}String typo() :{  Token t;}{  {    System.out.print("typo ");  }  < ARROW_RIGHT >  {    return Character.toString((char) 0x2192);  }| < ARROW_LEFT >  {    return Character.toString((char) 0x2190);  }| < ARROW_BI >  {    return Character.toString((char) 0x2194);  }| < DOUBLE_ARROW_RIGHT >  {    return Character.toString((char) 0x21D2);  }| < DOUBLE_ARROW_LEFT >  {    return Character.toString((char) 0x21D0);  }| < DOUBLE_ARROW_BI >  {    return Character.toString((char) 0x21D4);  }| < QUOTE_OPEN >  {    return Character.toString((char) 0x00AB);  }| < QUOTE_CLOSE >  {    return Character.toString((char) 0x00BB);  }| < DASH_SHORT >  {    return Character.toString((char) 0x2013);  }| < DASH_LONG >  {    return Character.toString((char) 0x2014);  }| < SYMBOL_COPYRIGHT >  {    return Character.toString((char) 0x00A9);  }| < SYMBOL_TRADEMARK >  {    return Character.toString((char) 0x2122);  }| < SYMBOL_REGISTERED >  {    return Character.toString((char) 0x00AE);  }| t = < RESOLUTION >  {    return t.image.replaceAll("x", Character.toString((char) 0x00D7));  }}String simpleTag() :{  String s;}{  {    System.out.print("simple ");  }  (    s = bold()  | s = italics()  )  {    return s;  }}String bold() :{  String s = "";  String out = "";}{  {    System.out.print("bold ");  }  (    < BOLD >    (      (        (          s = typo()        | s = italics()        | s = format()        | s = plainTextPiece()        )        {          out += s;        }      )+    )?    < BOLD >  )  {    return "<b>" + out + "</b>";  }}String italics() :{  String s = "";  String out = "";}{  {    System.out.print("italics ");  }  (    < ITALICS >    (      (        (          //s = bold()
+    < LINKC >  )  {    String rel = (isWiki) ? " rel=\"nofollow\"" : "";    return String.format("<a href=\"%s\" title=\"%s\"%s>%s</a>", url, titleAttr, rel, title);  }}String typo() :{  Token t;}{  {    System.out.print("typo ");  }  < ARROW_RIGHT >  {    return Character.toString((char) 0x2192);  }| < ARROW_LEFT >  {    return Character.toString((char) 0x2190);  }| < ARROW_BI >  {    return Character.toString((char) 0x2194);  }| < DOUBLE_ARROW_RIGHT >  {    return Character.toString((char) 0x21D2);  }| < DOUBLE_ARROW_LEFT >  {    return Character.toString((char) 0x21D0);  }| < DOUBLE_ARROW_BI >  {    return Character.toString((char) 0x21D4);  }| < QUOTE_OPEN >  {    return Character.toString((char) 0x00AB);  }| < QUOTE_CLOSE >  {    return Character.toString((char) 0x00BB);  }| < DASH_SHORT >  {    return Character.toString((char) 0x2013);  }| < DASH_LONG >  {    return Character.toString((char) 0x2014);  }| < SYMBOL_COPYRIGHT >  {    return Character.toString((char) 0x00A9);  }| < SYMBOL_TRADEMARK >  {    return Character.toString((char) 0x2122);  }| < SYMBOL_REGISTERED >  {    return Character.toString((char) 0x00AE);  }| t = < RESOLUTION >  {    return t.image.replaceAll("x", Character.toString((char) 0x00D7));  }}String simpleTag() :{  String s;}{  {    System.out.print("simple ");  }  (    s = bold()  | s = italics()  )  {    return s;  }}String bold() :{  String s = "";  String out = "";}{  {    System.out.print("bold ");  }  (    < BOLD >    (      (        (          s = typo()        | s = italics()        | s = format()        | s = plainTextPiece()        )        {          out += s;        }      )+    )?    < BOLD >  )  {
+    if(isNowiki)
+    {
+      return "**" + out + "**";
+    }    return "<b>" + out + "</b>";  }}String italics() :{  String s = "";  String out = "";}{  {    System.out.print("italics ");  }  (    < ITALICS >    (      (        (          //s = bold()
           //|	s = text() // TODO: text __BEZ__ bolda!
-          s = typo()        | s = bold()        | s = format()        | s = plainTextPiece()        )        {          out += s;        }      )+    )?    < ITALICS >  )  {    return "<i>" + out + "</i>";  }}String ocTag() :{  String s;}{
+          s = typo()        | s = bold()        | s = format()        | s = plainTextPiece()        )        {          out += s;        }      )+    )?    < ITALICS >  )  {
+    if(isNowiki)
+    {
+      return "//" + out + "//";
+    }    return "<i>" + out + "</i>";  }}String ocTag() :{  String s;}{
   {    System.out.print("octag ");
-  }  s = emailTag()  {    return s;  }| s = htmlTag()  {    return s;  }| s = image()  {    return s;  }| s = linkTag()  {    return s;  }}String htmlTag() :{  String s;}{  s = delTag()  {    return s;  }
+  }  s = emailTag()  {    return s;  }| s = htmlTag()  {    return s;  }| s = image()  {    return s;  }| s = linkTag()  {    return s;  }}String htmlTag() :{  String s;}{
+  s = nowikiTag()  {    return s;
+  }| s = delTag()  {    return s;  }
 | s = supTag()  {    return s;
   }
 | s = subTag()
   {
     return s;
   }}
+
+String nowikiTag() :
+{
+  String s;
+}
+{
+  (
+    {
+      System.out.print("sup ");
+		if(isNowiki)
+		{
+		  System.out.print("ERROR");
+		  return "ERROR ";
+		} else
+		{
+		  isNowiki = true;
+		} 
+    }
+    < NOWIKIO > s = text() < NOWIKIC >
+  )
+  {
+    isNowiki = false;
+    return s;
+  }
+}
 
 String supTag() :{
   String s;}
@@ -76,6 +120,8 @@ String supTag() :{
   )
   {
     isSup = false;
+    if(isNowiki)    {      return s;
+    }
     return "<sup>" + s + "</sup>";
   }
 }
@@ -98,6 +144,10 @@ String subTag() :{
   )
   {
     isSub = false;
+    if(isNowiki)
+    {
+      return s;
+    }
     return "<sub>" + s + "</sub>";
   }
 }String delTag() :{  String s;}{  (
@@ -108,7 +158,11 @@ String subTag() :{
 		} else		{
 		  isDel = true;		} 
     }    < DELO > s = text() < DELC >  )  {
-    isDel = false;    return "<del>" + s + "</del>";  }}//String text() :
+    isDel = false;
+    if(isNowiki)
+    {
+      return s;
+    }    return "<del>" + s + "</del>";  }}//String text() :
 //{
 //  Token t;
 //  String s = "";
