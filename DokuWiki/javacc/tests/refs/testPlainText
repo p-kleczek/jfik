@@ -4,5 +4,10 @@ ab[[cd
 a->b
 1x2
 a}}b
+x}y
+1&2
+k>l
+o#p
+ala?
 # OUT
-<p>abc12*<b a]]b ab[[cd a→b 1×2 a}}b</p>
+<p>abc12*<b a]]b ab[[cd a→b 1×2 a}}b x}y 1&2 k>l o#p ala?</p>

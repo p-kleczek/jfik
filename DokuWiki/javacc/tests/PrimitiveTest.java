@@ -239,6 +239,16 @@ public class PrimitiveTest {
 	public void testNowiki3() throws ParseException, IOException {
 		test();
 	}
+	
+	@Test
+	public void testCode1() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testFile1() throws ParseException, IOException {
+		test();
+	}
 
 	private static void test() throws IOException, ParseException {
 		String methodName = Thread.currentThread().getStackTrace()[2]
