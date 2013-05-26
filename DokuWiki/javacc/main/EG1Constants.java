@@ -85,17 +85,27 @@ public interface EG1Constants {
   /** RegularExpression Id. */
   int SUBC = 37;
   /** RegularExpression Id. */
-  int NOWIKIO = 38;
+  int CODEO = 38;
   /** RegularExpression Id. */
-  int NOWIKIC = 39;
+  int CODEC = 39;
   /** RegularExpression Id. */
-  int BOLD = 40;
+  int FILEO = 40;
   /** RegularExpression Id. */
-  int ITALICS = 41;
+  int FILEC = 41;
   /** RegularExpression Id. */
-  int UNDERLINE = 42;
+  int NOWIKIO = 42;
   /** RegularExpression Id. */
-  int NO_FORAT = 43;
+  int NOWIKIC = 43;
+  /** RegularExpression Id. */
+  int BOLD = 44;
+  /** RegularExpression Id. */
+  int ITALICS = 45;
+  /** RegularExpression Id. */
+  int UNDERLINE = 46;
+  /** RegularExpression Id. */
+  int NO_FORAT = 47;
+  /** RegularExpression Id. */
+  int PUNCT = 48;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -140,26 +150,29 @@ public interface EG1Constants {
     "\"</sup>\"",
     "\"<sub>\"",
     "\"</sub>\"",
+    "\"<code>\"",
+    "\"</code>\"",
+    "\"<file>\"",
+    "\"</file>\"",
     "\"<nowiki>\"",
     "\"</nowiki>\"",
     "\"**\"",
     "\"//\"",
     "\"__\"",
     "\"%%\"",
+    "<PUNCT>",
     "\" \"",
     "\"<\"",
     "\">\"",
     "\"*\"",
-    "\"/\"",
     "\"-\"",
-    "\"[\"",
     "\"=\"",
     "\".\"",
-    "\"_\"",
-    "\":\"",
     "\"#\"",
     "\"?\"",
     "\"|\"",
+    "\":\"",
+    "\"_\"",
     "\" =\"",
   };
 

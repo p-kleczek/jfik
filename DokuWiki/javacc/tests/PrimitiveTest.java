@@ -246,6 +246,11 @@ public class PrimitiveTest {
 	}
 	
 	@Test
+	public void testCode2() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
 	public void testFile1() throws ParseException, IOException {
 		test();
 	}
