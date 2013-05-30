@@ -1,11 +1,11 @@
-  -a
+  -a**x**
     -b
 
   *a
     *b
 # OUT
 <ol>
-	<li>a
+	<li>a<b>x</b>
 		<ol>
 			<li>b
 			</li>

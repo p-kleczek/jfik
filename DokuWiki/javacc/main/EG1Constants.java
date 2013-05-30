@@ -55,47 +55,59 @@ public interface EG1Constants {
   /** RegularExpression Id. */
   int HR = 22;
   /** RegularExpression Id. */
-  int URL = 23;
+  int HEADLINE_END = 23;
   /** RegularExpression Id. */
-  int DOMAIN = 24;
+  int URL = 24;
   /** RegularExpression Id. */
-  int E_MAIL = 25;
+  int DOMAIN = 25;
   /** RegularExpression Id. */
-  int E_MAIL_USERNAME = 26;
+  int E_MAIL = 26;
   /** RegularExpression Id. */
-  int LINKO = 27;
+  int E_MAIL_USERNAME = 27;
   /** RegularExpression Id. */
-  int LINKC = 28;
+  int LINKO = 28;
   /** RegularExpression Id. */
-  int IMAGEO = 29;
+  int LINKC = 29;
   /** RegularExpression Id. */
-  int IMAGEC = 30;
+  int IMAGEO = 30;
   /** RegularExpression Id. */
-  int DOUBLE_SPACE = 31;
+  int IMAGEC = 31;
   /** RegularExpression Id. */
-  int DELO = 32;
+  int DOUBLE_SPACE = 32;
   /** RegularExpression Id. */
-  int DELC = 33;
+  int DELO = 33;
   /** RegularExpression Id. */
-  int SUPO = 34;
+  int DELC = 34;
   /** RegularExpression Id. */
-  int SUPC = 35;
+  int SUPO = 35;
   /** RegularExpression Id. */
-  int SUBO = 36;
+  int SUPC = 36;
   /** RegularExpression Id. */
-  int SUBC = 37;
+  int SUBO = 37;
   /** RegularExpression Id. */
-  int NOWIKIO = 38;
+  int SUBC = 38;
   /** RegularExpression Id. */
-  int NOWIKIC = 39;
+  int CODEO = 39;
   /** RegularExpression Id. */
-  int BOLD = 40;
+  int CODEC = 40;
   /** RegularExpression Id. */
-  int ITALICS = 41;
+  int FILEO = 41;
   /** RegularExpression Id. */
-  int UNDERLINE = 42;
+  int FILEC = 42;
   /** RegularExpression Id. */
-  int NO_FORAT = 43;
+  int NOWIKIO = 43;
+  /** RegularExpression Id. */
+  int NOWIKIC = 44;
+  /** RegularExpression Id. */
+  int BOLD = 45;
+  /** RegularExpression Id. */
+  int ITALICS = 46;
+  /** RegularExpression Id. */
+  int UNDERLINE = 47;
+  /** RegularExpression Id. */
+  int NO_FORAT = 48;
+  /** RegularExpression Id. */
+  int PUNCT = 49;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -125,6 +137,7 @@ public interface EG1Constants {
     "<DIGIT>",
     "<LETTER>",
     "<HR>",
+    "<HEADLINE_END>",
     "<URL>",
     "<DOMAIN>",
     "<E_MAIL>",
@@ -140,27 +153,29 @@ public interface EG1Constants {
     "\"</sup>\"",
     "\"<sub>\"",
     "\"</sub>\"",
+    "\"<code>\"",
+    "\"</code>\"",
+    "\"<file>\"",
+    "\"</file>\"",
     "\"<nowiki>\"",
     "\"</nowiki>\"",
     "\"**\"",
     "\"//\"",
     "\"__\"",
     "\"%%\"",
+    "<PUNCT>",
     "\" \"",
     "\"<\"",
     "\">\"",
     "\"*\"",
-    "\"/\"",
     "\"-\"",
-    "\"[\"",
     "\"=\"",
     "\".\"",
-    "\"_\"",
-    "\":\"",
     "\"#\"",
     "\"?\"",
     "\"|\"",
-    "\" =\"",
+    "\":\"",
+    "\"_\"",
   };
 
 }

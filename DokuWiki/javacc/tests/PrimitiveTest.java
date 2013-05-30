@@ -184,7 +184,13 @@ public class PrimitiveTest {
 	public void testHeadline() throws ParseException, IOException {
 		test();
 	}
-
+	
+	@Test
+	public void testFakeHeadline() throws ParseException, IOException {
+		test();
+	}
+	
+	
 	@Test
 	public void testPara() throws ParseException, IOException {
 		test();
@@ -242,6 +248,11 @@ public class PrimitiveTest {
 	
 	@Test
 	public void testCode1() throws ParseException, IOException {
+		test();
+	}
+	
+	@Test
+	public void testCode2() throws ParseException, IOException {
 		test();
 	}
 	
