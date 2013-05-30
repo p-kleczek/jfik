@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <code>class HelloWorldApp {
     public static void main(String[] args) {
         System.out.println("Hello World!"); //Display the string.
@@ -8,4 +9,16 @@
     public static void main(String[] args) {
         System.out.println("Hello World!"); //Display the string.
     }
+=======
+<code>class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println("Hello World!"); //Display the string.
+    }
+}</code>
+# OUT
+<p><code>class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println("Hello World!"); //Display the string.
+    }
+>>>>>>> branch 'master' of https://github.com/p-kleczek/jfik.git
 }</code></p>
